@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.1" orientation="orthogonal" renderorder="right-down" width="80" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="593">
+ <editorsettings>
+  <export target="map.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="DnN_LevelTiles" tilewidth="32" tileheight="32" tilecount="56" columns="7">
+  <image source="DnN_LevelTiles.png" width="224" height="256"/>
+ </tileset>
+ <tileset firstgid="57" name="hero" tilewidth="112" tileheight="64" tilecount="2" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0" class="element">
+   <image width="112" height="64" source="../../images/DnN_Player/DnN_Player_Idle_0001.png"/>
+  </tile>
+  <tile id="1">
+   <image width="32" height="32" source="../../images/DnN_Player/DnN_PlayerBullet_HitFX_0001.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="59" name="enemy" tilewidth="81" tileheight="73" tilecount="5" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="64" height="64" source="../../images/DnN_Enemy/DnN_Enemy_Idle_0001.png"/>
+  </tile>
+  <tile id="4">
+   <image width="81" height="73" source="../../images/DnN_Level/prop1.png"/>
+  </tile>
+  <tile id="5">
+   <image width="74" height="44" source="../../images/DnN_Level/prop2.png"/>
+  </tile>
+  <tile id="6">
+   <image width="59" height="59" source="../../images/DnN_Level/props3.png"/>
+  </tile>
+  <tile id="7">
+   <image width="58" height="58" source="../../images/DnN_Level/props4.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="67" name="hud" tilewidth="32" tileheight="32" tilecount="5" columns="5">
+  <image source="../../images/DnN_HUD.png" width="160" height="32"/>
+ </tileset>
+ <tileset firstgid="72" name="bossTile" tilewidth="133" tileheight="128" tilecount="2" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="133" height="128" source="../../images/DnN_Boss/DnN_BossDreamForm_Attack_0005.png"/>
+  </tile>
+  <tile id="1">
+   <image width="133" height="128" source="../../images/DnN_Boss/DnN_BossNightmareForm_IdleMove_0002.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="74" name="eyes" tilewidth="256" tileheight="32" tilecount="2" columns="2">
+  <image source="../../images/DnN_Boss/eyes.png" width="512" height="32"/>
+ </tileset>
+ <objectgroup id="3" name="walls">
+  <object id="22" class="wall" gid="37" x="0" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="23" class="wall" gid="37" x="0" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="24" class="wall" gid="37" x="0" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="25" class="wall" gid="37" x="0" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="26" class="wall" gid="37" x="0" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="27" class="wall" gid="37" x="0" y="224" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="28" class="wall" gid="37" x="0" y="192" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="29" class="wall" gid="37" x="0" y="160" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="63" class="wall" gid="30" x="0" y="128" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="80" class="wall" gid="46" x="32" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="81" class="wall" gid="46" x="64" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="82" class="wall" gid="46" x="96" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="83" class="wall" gid="46" x="32" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="84" class="wall" gid="46" x="64" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="88" class="wall" gid="46" x="128" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="91" class="wall" gid="46" x="352" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="92" class="wall" gid="46" x="320" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="95" class="wall" gid="46" x="288" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="96" class="wall" gid="46" x="256" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="99" class="wall" gid="46" x="224" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="100" class="wall" gid="46" x="192" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="103" class="wall" gid="46" x="160" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="106" class="wall" gid="39" x="32" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="107" class="wall" gid="40" x="64" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="108" class="wall" gid="39" x="96" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="109" class="wall" gid="39" x="128" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="110" class="wall" gid="39" x="160" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="111" class="wall" gid="39" x="192" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="112" class="wall" gid="39" x="224" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="113" class="wall" gid="39" x="256" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="114" class="wall" gid="39" x="288" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="115" class="wall" gid="39" x="320" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="116" class="wall" gid="40" x="352" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="117" class="wall" gid="47" x="352" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="132" class="wall" gid="46" x="32" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="133" class="wall" gid="46" x="64" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="134" class="wall" gid="46" x="96" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="135" class="wall" gid="46" x="128" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="136" class="wall" gid="46" x="160" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="137" class="wall" gid="46" x="192" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="138" class="wall" gid="46" x="256" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="139" class="wall" gid="46" x="224" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="140" class="wall" gid="46" x="288" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="141" class="wall" gid="46" x="320" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="142" class="wall" gid="47" x="352" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="145" class="wall" gid="17" x="384" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="147" class="wall" gid="17" x="384" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="148" class="wall" gid="17" x="384" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="149" class="wall" gid="17" x="384" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="150" class="wall" gid="17" x="384" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="151" class="wall" gid="11" x="416" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="152" class="wall" gid="11" x="448" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="153" class="wall" gid="11" x="480" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="154" class="wall" gid="10" x="384" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="156" class="wall" gid="11" x="544" y="224" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="157" class="wall" gid="11" x="576" y="224" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="158" class="wall" gid="18" x="416" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="159" class="wall" gid="18" x="448" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="160" class="wall" gid="18" x="480" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="161" class="wall" gid="18" x="512" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="162" class="wall" gid="18" x="512" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="163" class="wall" gid="18" x="544" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="164" class="wall" gid="18" x="576" y="256" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="165" class="wall" gid="18" x="576" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="167" class="wall" gid="18" x="544" y="288" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="168" class="wall" gid="18" x="512" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="169" class="wall" gid="18" x="480" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="170" class="wall" gid="18" x="448" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="171" class="wall" gid="18" x="416" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="172" class="wall" gid="18" x="416" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="173" class="wall" gid="18" x="416" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="174" class="wall" gid="18" x="448" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="175" class="wall" gid="18" x="448" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="176" class="wall" gid="18" x="480" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="177" class="wall" gid="18" x="480" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="178" class="wall" gid="18" x="512" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="179" class="wall" gid="18" x="512" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="180" class="wall" gid="18" x="544" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="181" class="wall" gid="18" x="576" y="384" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="182" class="wall" gid="18" x="576" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="183" class="wall" gid="18" x="544" y="352" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="184" class="wall" gid="18" x="544" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="185" class="wall" gid="18" x="576" y="320" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="187" class="wall" gid="10" x="512" y="224" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="190" class="wall" gid="4" x="608" y="121" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="191" class="wall" gid="4" x="576" y="121" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="192" class="wall" gid="4" x="544" y="121" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="193" class="wall" gid="4" x="512" y="121" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="194" class="wall" gid="4" x="480" y="121" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="195" class="wall" gid="4" x="448" y="121" width="32" height="32">
+   <properties>
+    <property name="bodyType" value="static"/>
+    <property name="friction" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="255" class="wall" gid="11" x="608" y="224" width="32" height="32"/>
+  <object id="256" class="wall" gid="11" x="640" y="224" width="32" height="32"/>
+  <object id="257" class="wall" gid="11" x="672" y="224" width="32" height="32"/>
+  <object id="263" class="wall" gid="18" x="608" y="256" width="32" height="32"/>
+  <object id="264" class="wall" gid="18" x="640" y="256" width="32" height="32"/>
+  <object id="265" class="wall" gid="18" x="672" y="256" width="32" height="32"/>
+  <object id="266" class="wall" gid="18" x="672" y="288" width="32" height="32"/>
+  <object id="267" class="wall" gid="18" x="640" y="288" width="32" height="32"/>
+  <object id="268" class="wall" gid="18" x="608" y="288" width="32" height="32"/>
+  <object id="269" class="wall" gid="18" x="608" y="320" width="32" height="32"/>
+  <object id="270" class="wall" gid="18" x="640" y="320" width="32" height="32"/>
+  <object id="271" class="wall" gid="18" x="672" y="320" width="32" height="32"/>
+  <object id="272" class="wall" gid="18" x="672" y="352" width="32" height="32"/>
+  <object id="273" class="wall" gid="18" x="640" y="352" width="32" height="32"/>
+  <object id="274" class="wall" gid="18" x="608" y="352" width="32" height="32"/>
+  <object id="275" class="wall" gid="18" x="608" y="384" width="32" height="32"/>
+  <object id="276" class="wall" gid="18" x="640" y="384" width="32" height="32"/>
+  <object id="277" class="wall" gid="18" x="672" y="384" width="32" height="32"/>
+  <object id="298" class="wall" gid="26" x="2528" y="384" width="32" height="32"/>
+  <object id="299" class="wall" gid="25" x="2496" y="384" width="32" height="32"/>
+  <object id="300" class="wall" gid="25" x="2464" y="384" width="32" height="32"/>
+  <object id="301" class="wall" gid="25" x="2432" y="384" width="32" height="32"/>
+  <object id="302" class="wall" gid="25" x="2368" y="384" width="32" height="32"/>
+  <object id="303" class="wall" gid="25" x="2400" y="384" width="32" height="32"/>
+  <object id="304" class="wall" gid="25" x="2304" y="384" width="32" height="32"/>
+  <object id="305" class="wall" gid="25" x="2336" y="384" width="32" height="32"/>
+  <object id="306" class="wall" gid="25" x="2272" y="384" width="32" height="32"/>
+  <object id="307" class="wall" gid="25" x="2208" y="384" width="32" height="32"/>
+  <object id="308" class="wall" gid="25" x="2240" y="384" width="32" height="32"/>
+  <object id="309" class="wall" gid="25" x="2176" y="384" width="32" height="32"/>
+  <object id="310" class="wall" gid="25" x="2144" y="384" width="32" height="32"/>
+  <object id="311" class="wall" gid="25" x="2112" y="384" width="32" height="32"/>
+  <object id="312" class="wall" gid="25" x="2080" y="384" width="32" height="32"/>
+  <object id="313" class="wall" gid="25" x="2048" y="384" width="32" height="32"/>
+  <object id="314" class="wall" gid="25" x="1984" y="384" width="32" height="32"/>
+  <object id="315" class="wall" gid="25" x="2016" y="384" width="32" height="32"/>
+  <object id="316" class="wall" gid="25" x="1952" y="384" width="32" height="32"/>
+  <object id="317" class="wall" gid="25" x="1920" y="384" width="32" height="32"/>
+  <object id="318" class="wall" gid="25" x="1856" y="384" width="32" height="32"/>
+  <object id="319" class="wall" gid="25" x="1888" y="384" width="32" height="32"/>
+  <object id="320" class="wall" gid="25" x="1824" y="384" width="32" height="32"/>
+  <object id="321" class="wall" gid="25" x="1792" y="384" width="32" height="32"/>
+  <object id="322" class="wall" gid="25" x="1760" y="384" width="32" height="32"/>
+  <object id="323" class="wall" gid="25" x="1728" y="384" width="32" height="32"/>
+  <object id="324" class="wall" gid="25" x="1696" y="384" width="32" height="32"/>
+  <object id="325" class="wall" gid="25" x="1632" y="384" width="32" height="32"/>
+  <object id="326" class="wall" gid="25" x="1664" y="384" width="32" height="32"/>
+  <object id="327" class="wall" gid="25" x="1600" y="384" width="32" height="32"/>
+  <object id="328" class="wall" gid="25" x="1568" y="384" width="32" height="32"/>
+  <object id="329" class="wall" gid="25" x="1536" y="384" width="32" height="32"/>
+  <object id="330" class="wall" gid="25" x="1504" y="384" width="32" height="32"/>
+  <object id="331" class="wall" gid="25" x="1472" y="384" width="32" height="32"/>
+  <object id="332" class="wall" gid="25" x="1440" y="384" width="32" height="32"/>
+  <object id="333" class="wall" gid="25" x="1408" y="384" width="32" height="32"/>
+  <object id="334" class="wall" gid="25" x="1344" y="384" width="32" height="32"/>
+  <object id="335" class="wall" gid="25" x="1376" y="384" width="32" height="32"/>
+  <object id="336" class="wall" gid="25" x="1312" y="384" width="32" height="32"/>
+  <object id="337" class="wall" gid="25" x="1280" y="384" width="32" height="32"/>
+  <object id="338" class="wall" gid="25" x="1248" y="384" width="32" height="32"/>
+  <object id="339" class="wall" gid="25" x="1216" y="384" width="32" height="32"/>
+  <object id="340" class="wall" gid="25" x="1184" y="384" width="32" height="32"/>
+  <object id="341" class="wall" gid="25" x="1152" y="384" width="32" height="32"/>
+  <object id="342" class="wall" gid="25" x="1120" y="384" width="32" height="32"/>
+  <object id="343" class="wall" gid="25" x="1088" y="384" width="32" height="32"/>
+  <object id="344" class="wall" gid="25" x="1056" y="384" width="32" height="32"/>
+  <object id="345" class="wall" gid="25" x="1024" y="384" width="32" height="32"/>
+  <object id="354" class="wall" gid="25" x="768" y="384" width="32" height="32"/>
+  <object id="355" class="wall" gid="25" x="736" y="384" width="32" height="32"/>
+  <object id="356" class="wall" gid="25" x="704" y="384" width="32" height="32"/>
+  <object id="358" class="wall" gid="19" x="2528" y="352" width="32" height="32"/>
+  <object id="359" class="wall" gid="19" x="2528" y="320" width="32" height="32"/>
+  <object id="360" class="wall" gid="19" x="2528" y="288" width="32" height="32"/>
+  <object id="361" class="wall" gid="19" x="2528" y="256" width="32" height="32"/>
+  <object id="362" class="wall" gid="19" x="2528" y="224" width="32" height="32"/>
+  <object id="363" class="wall" gid="19" x="2528" y="192" width="32" height="32"/>
+  <object id="364" class="wall" gid="19" x="2528" y="160" width="32" height="32"/>
+  <object id="365" class="wall" gid="19" x="2528" y="128" width="32" height="32"/>
+  <object id="366" class="wall" gid="19" x="2528" y="96" width="32" height="32"/>
+  <object id="367" class="wall" gid="19" x="2528" y="64" width="32" height="32"/>
+  <object id="370" class="wall" gid="12" x="2528" y="32" width="32" height="32"/>
+  <object id="406" class="wall" gid="43" x="1120" y="288" width="32" height="32"/>
+  <object id="407" class="wall" gid="52" x="800" y="384" width="32" height="32"/>
+  <object id="408" class="wall" gid="53" x="832" y="384" width="32" height="32"/>
+  <object id="409" class="wall" gid="53" x="864" y="384" width="32" height="32"/>
+  <object id="410" class="wall" gid="53" x="928" y="384" width="32" height="32"/>
+  <object id="411" class="wall" gid="53" x="896" y="384" width="32" height="32"/>
+  <object id="412" class="wall" gid="53" x="960" y="384" width="32" height="32"/>
+  <object id="413" class="wall" gid="54" x="992" y="384" width="32" height="32"/>
+  <object id="414" class="wall" gid="45" x="800" y="352" width="32" height="32"/>
+  <object id="415" class="wall" gid="48" x="832" y="352" width="32" height="32"/>
+  <object id="417" class="wall" gid="41" x="832" y="320" width="32" height="32"/>
+  <object id="418" class="wall" gid="45" x="800" y="320" width="32" height="32"/>
+  <object id="420" class="wall" gid="38" x="800" y="288" width="32" height="32"/>
+  <object id="422" class="wall" gid="39" x="832" y="288" width="32" height="32"/>
+  <object id="423" class="wall" gid="42" x="864" y="320" width="32" height="32"/>
+  <object id="424" class="wall" gid="49" x="864" y="352" width="32" height="32"/>
+  <object id="426" class="wall" gid="39" x="864" y="288" width="32" height="32"/>
+  <object id="427" class="wall" gid="40" x="896" y="288" width="32" height="32"/>
+  <object id="428" class="wall" gid="47" x="896" y="320" width="32" height="32"/>
+  <object id="430" class="wall" gid="46" x="896" y="352" width="32" height="32"/>
+  <object id="443" class="wall" gid="3" x="1088" y="96" width="32" height="32"/>
+  <object id="444" class="wall" gid="4" x="1120" y="96" width="32" height="32"/>
+  <object id="445" class="wall" gid="4" x="1152" y="96" width="32" height="32"/>
+  <object id="446" class="wall" gid="4" x="1184" y="96" width="32" height="32"/>
+  <object id="447" class="wall" gid="4" x="1216" y="96" width="32" height="32"/>
+  <object id="448" class="wall" gid="4" x="1248" y="96" width="32" height="32"/>
+  <object id="449" class="wall" gid="5" x="1280" y="96" width="32" height="32"/>
+  <object id="452" class="wall" gid="1" x="1376" y="160" width="32" height="32"/>
+  <object id="453" class="wall" gid="2" x="1408" y="160" width="32" height="32"/>
+  <object id="454" class="wall" gid="8" x="1376" y="192" width="32" height="32"/>
+  <object id="455" class="wall" gid="8" x="1376" y="224" width="32" height="32"/>
+  <object id="456" class="wall" gid="8" x="1376" y="256" width="32" height="32"/>
+  <object id="457" class="wall" gid="9" x="1408" y="256" width="32" height="32"/>
+  <object id="458" class="wall" gid="9" x="1408" y="224" width="32" height="32"/>
+  <object id="459" class="wall" gid="9" x="1408" y="192" width="32" height="32"/>
+  <object id="460" class="wall" gid="16" x="1408" y="288" width="32" height="32"/>
+  <object id="461" class="wall" gid="15" x="1376" y="288" width="32" height="32"/>
+  <object id="462" class="wall" gid="10" x="1504" y="192" width="32" height="32"/>
+  <object id="463" class="wall" gid="24" x="1504" y="224" width="32" height="32"/>
+  <object id="465" class="wall" gid="11" x="1536" y="192" width="32" height="32"/>
+  <object id="466" class="wall" gid="11" x="1568" y="192" width="32" height="32"/>
+  <object id="467" class="wall" gid="25" x="1536" y="224" width="32" height="32"/>
+  <object id="468" class="wall" gid="25" x="1568" y="224" width="32" height="32"/>
+  <object id="469" class="wall" gid="26" x="1600" y="224" width="32" height="32"/>
+  <object id="470" class="wall" gid="12" x="1600" y="192" width="32" height="32"/>
+  <object id="476" class="wall" gid="38" x="2336" y="192" width="32" height="32"/>
+  <object id="477" class="wall" gid="39" x="2368" y="192" width="32" height="32"/>
+  <object id="478" class="wall" gid="39" x="2400" y="192" width="32" height="32"/>
+  <object id="479" class="wall" gid="39" x="2432" y="192" width="32" height="32"/>
+  <object id="480" class="wall" gid="39" x="2464" y="192" width="32" height="32"/>
+  <object id="481" class="wall" gid="40" x="2496" y="192" width="32" height="32"/>
+  <object id="482" class="wall" gid="47" x="2496" y="224" width="32" height="32"/>
+  <object id="483" class="wall" gid="47" x="2496" y="256" width="32" height="32"/>
+  <object id="484" class="wall" gid="47" x="2496" y="256" width="32" height="32"/>
+  <object id="485" class="wall" gid="47" x="2496" y="288" width="32" height="32"/>
+  <object id="486" class="wall" gid="47" x="2496" y="320" width="32" height="32"/>
+  <object id="487" class="wall" gid="54" x="2496" y="352" width="32" height="32"/>
+  <object id="488" class="wall" gid="53" x="2464" y="352" width="32" height="32"/>
+  <object id="489" class="wall" gid="53" x="2432" y="352" width="32" height="32"/>
+  <object id="490" class="wall" gid="53" x="2400" y="352" width="32" height="32"/>
+  <object id="491" class="wall" gid="53" x="2368" y="352" width="32" height="32"/>
+  <object id="492" class="wall" gid="52" x="2336" y="352" width="32" height="32"/>
+  <object id="493" class="wall" gid="45" x="2336" y="320" width="32" height="32"/>
+  <object id="494" class="wall" gid="45" x="2336" y="288" width="32" height="32"/>
+  <object id="495" class="wall" gid="45" x="2336" y="256" width="32" height="32"/>
+  <object id="496" class="wall" gid="45" x="2336" y="224" width="32" height="32"/>
+  <object id="497" class="wall" gid="42" x="2464" y="224" width="32" height="32"/>
+  <object id="498" class="wall" gid="49" x="2464" y="256" width="32" height="32"/>
+  <object id="499" class="wall" gid="49" x="2464" y="320" width="32" height="32"/>
+  <object id="500" class="wall" gid="42" x="2464" y="288" width="32" height="32"/>
+  <object id="501" class="wall" gid="48" x="2432" y="320" width="32" height="32"/>
+  <object id="502" class="wall" gid="41" x="2432" y="288" width="32" height="32"/>
+  <object id="503" class="wall" gid="41" x="2432" y="224" width="32" height="32"/>
+  <object id="504" class="wall" gid="48" x="2432" y="256" width="32" height="32"/>
+  <object id="505" class="wall" gid="42" x="2400" y="224" width="32" height="32"/>
+  <object id="506" class="wall" gid="41" x="2368" y="224" width="32" height="32"/>
+  <object id="507" class="wall" gid="41" x="2368" y="288" width="32" height="32"/>
+  <object id="508" class="wall" gid="42" x="2400" y="288" width="32" height="32"/>
+  <object id="509" class="wall" gid="49" x="2400" y="320" width="32" height="32"/>
+  <object id="510" class="wall" gid="48" x="2368" y="320" width="32" height="32"/>
+  <object id="511" class="wall" gid="48" x="2368" y="256" width="32" height="32"/>
+  <object id="512" class="wall" gid="49" x="2400" y="256" width="32" height="32"/>
+  <object id="513" class="wall" gid="30" x="2304" y="256" width="32" height="32"/>
+  <object id="514" class="wall" gid="29" x="2272" y="256" width="32" height="32"/>
+  <object id="515" class="wall" gid="37" x="2304" y="288" width="32" height="32"/>
+  <object id="516" class="wall" gid="37" x="2304" y="320" width="32" height="32"/>
+  <object id="517" class="wall" gid="44" x="2304" y="352" width="32" height="32"/>
+  <object id="519" class="wall" gid="43" x="2272" y="352" width="32" height="32"/>
+  <object id="520" class="wall" gid="36" x="2272" y="320" width="32" height="32"/>
+  <object id="521" class="wall" gid="36" x="2272" y="288" width="32" height="32"/>
+  <object id="524" class="wall" gid="10" x="1696" y="128" width="32" height="32"/>
+  <object id="525" class="wall" gid="11" x="1728" y="128" width="32" height="32"/>
+  <object id="526" class="wall" gid="11" x="1760" y="128" width="32" height="32"/>
+  <object id="527" class="wall" gid="11" x="1792" y="128" width="32" height="32"/>
+  <object id="528" class="wall" gid="11" x="1824" y="128" width="32" height="32"/>
+  <object id="529" class="wall" gid="17" x="1696" y="160" width="32" height="32"/>
+  <object id="530" class="wall" gid="24" x="1696" y="224" width="32" height="32"/>
+  <object id="531" class="wall" gid="25" x="1728" y="224" width="32" height="32"/>
+  <object id="532" class="wall" gid="25" x="1760" y="224" width="32" height="32"/>
+  <object id="533" class="wall" gid="25" x="1792" y="224" width="32" height="32"/>
+  <object id="534" class="wall" gid="25" x="1824" y="224" width="32" height="32"/>
+  <object id="535" class="wall" gid="13" x="1728" y="160" width="32" height="32"/>
+  <object id="536" class="wall" gid="14" x="1760" y="160" width="32" height="32"/>
+  <object id="537" class="wall" gid="13" x="1792" y="160" width="32" height="32"/>
+  <object id="538" class="wall" gid="14" x="1824" y="160" width="32" height="32"/>
+  <object id="539" class="wall" gid="20" x="1728" y="192" width="32" height="32"/>
+  <object id="540" class="wall" gid="20" x="1792" y="192" width="32" height="32"/>
+  <object id="541" class="wall" gid="21" x="1824" y="192" width="32" height="32"/>
+  <object id="542" class="wall" gid="21" x="1760" y="192" width="32" height="32"/>
+  <object id="543" class="wall" gid="17" x="1696" y="192" width="32" height="32"/>
+  <object id="544" class="wall" gid="12" x="1856" y="128" width="32" height="32"/>
+  <object id="545" class="wall" gid="26" x="1856" y="224" width="32" height="32"/>
+  <object id="546" class="wall" gid="19" x="1856" y="192" width="32" height="32"/>
+  <object id="547" class="wall" gid="19" x="1856" y="160" width="32" height="32"/>
+  <object id="569" class="wall" gid="5" x="2112" y="128" width="32" height="32"/>
+  <object id="568" class="wall" gid="4" x="2080" y="128" width="32" height="32"/>
+  <object id="567" class="wall" gid="4" x="2048" y="128" width="32" height="32"/>
+  <object id="566" class="wall" gid="3" x="2016" y="128" width="32" height="32"/>
+  <object id="573" class="wall" gid="1073741827" x="2016" y="96" width="32" height="32"/>
+  <object id="572" class="wall" gid="1073741828" x="2048" y="96" width="32" height="32"/>
+  <object id="571" class="wall" gid="1073741828" x="2080" y="96" width="32" height="32"/>
+  <object id="570" class="wall" gid="1073741829" x="2112" y="96" width="32" height="32"/>
+  <object id="574" class="wall" gid="16" x="2240" y="352" width="32" height="32"/>
+  <object id="575" class="wall" gid="15" x="2208" y="352" width="32" height="32"/>
+  <object id="576" class="wall" gid="1" x="2208" y="320" width="32" height="32"/>
+  <object id="577" class="wall" gid="2" x="2240" y="320" width="32" height="32"/>
+  <object id="398" class="wall" gid="29" x="1120" y="224" width="32" height="32"/>
+  <object id="399" class="wall" gid="30" x="1152" y="224" width="32" height="32"/>
+  <object id="401" class="wall" gid="36" x="1120" y="256" width="32" height="32"/>
+  <object id="403" class="wall" gid="37" x="1152" y="256" width="32" height="32"/>
+  <object id="404" class="wall" gid="44" x="1152" y="288" width="32" height="32"/>
+  <object id="278" class="wall" gid="11" x="704" y="224" width="32" height="32"/>
+  <object id="279" class="wall" gid="11" x="736" y="224" width="32" height="32"/>
+  <object id="282" class="wall" gid="13" x="704" y="256" width="32" height="32"/>
+  <object id="283" class="wall" gid="14" x="736" y="256" width="32" height="32"/>
+  <object id="285" class="wall" gid="20" x="704" y="288" width="32" height="32"/>
+  <object id="286" class="wall" gid="21" x="736" y="288" width="32" height="32"/>
+  <object id="383" class="wall" gid="12" x="768" y="224" width="32" height="32"/>
+  <object id="384" class="wall" gid="19" x="768" y="256" width="32" height="32"/>
+  <object id="385" class="wall" gid="19" x="768" y="288" width="32" height="32"/>
+  <object id="386" class="wall" gid="19" x="768" y="320" width="32" height="32"/>
+  <object id="387" class="wall" gid="19" x="768" y="352" width="32" height="32"/>
+  <object id="389" class="wall" gid="13" x="704" y="320" width="32" height="32"/>
+  <object id="390" class="wall" gid="14" x="736" y="320" width="32" height="32"/>
+  <object id="391" class="wall" gid="21" x="736" y="352" width="32" height="32"/>
+  <object id="392" class="wall" gid="20" x="704" y="352" width="32" height="32"/>
+  <object id="393" class="wall" gid="31" x="864" y="160" width="32" height="32"/>
+  <object id="394" class="wall" gid="32" x="896" y="160" width="32" height="32"/>
+  <object id="395" class="wall" gid="32" x="928" y="160" width="32" height="32"/>
+  <object id="396" class="wall" gid="32" x="960" y="160" width="32" height="32"/>
+  <object id="397" class="wall" gid="33" x="992" y="160" width="32" height="32"/>
+  <object id="583" class="wall" gid="33" x="992" y="352" width="32" height="32"/>
+  <object id="584" class="wall" gid="32" x="960" y="352" width="32" height="32"/>
+  <object id="585" class="wall" gid="31" x="928" y="352" width="32" height="32"/>
+ </objectgroup>
+ <objectgroup id="6" name="enemies">
+  <object id="472" class="normalEn" gid="59" x="1376" y="64" width="64" height="64"/>
+  <object id="548" class="normalEn" gid="59" x="1824" y="96" width="64" height="64"/>
+  <object id="549" class="normalEn" gid="59" x="1760" y="96" width="64" height="64"/>
+  <object id="550" class="normalEn" gid="59" x="1696" y="96" width="64" height="64"/>
+  <object id="473" class="normalEn" gid="59" x="1568" y="64" width="64" height="64"/>
+  <object id="551" class="normalEn" gid="59" x="1952" y="352" width="64" height="64"/>
+  <object id="552" class="normalEn" gid="59" x="1824" y="352" width="64" height="64"/>
+  <object id="523" class="normalEn" gid="59" x="2272" y="160" width="64" height="64"/>
+  <object id="474" class="normalEn" gid="59" x="1312" y="64" width="64" height="64"/>
+  <object id="438" class="normalEn" gid="59" x="1120" y="192" width="64" height="64"/>
+  <object id="435" class="normalEn" gid="59" x="576" y="64" width="64" height="64"/>
+  <object id="437" class="normalEn" gid="59" x="928" y="64" width="64" height="64"/>
+  <object id="436" class="normalEn" gid="59" x="704" y="64" width="64" height="64"/>
+  <object id="434" class="normalEn" gid="59" x="384" y="64" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="8" name="decor">
+  <object id="380" class="decor" gid="65" x="544" y="64" width="59" height="59"/>
+  <object id="381" class="decor" gid="66" x="32" y="224" width="58" height="58"/>
+  <object id="382" class="decor" gid="66" x="288" y="256" width="58" height="58"/>
+  <object id="439" class="decor" gid="65" x="672" y="192" width="59" height="59"/>
+  <object id="440" class="decor" gid="66" x="832" y="256" width="58" height="58"/>
+  <object id="378" class="decor" gid="63" x="448" y="163" width="81" height="73"/>
+  <object id="379" class="decor" gid="64" x="542" y="137" width="74" height="44"/>
+  <object id="441" class="decor" gid="66" x="1184" y="288" width="58" height="58"/>
+  <object id="450" class="decor" gid="63" x="1227" y="138" width="81" height="73"/>
+  <object id="451" class="decor" gid="64" x="1121" y="109" width="74" height="44"/>
+  <object id="471" class="decor" gid="65" x="1568" y="352" width="59" height="59"/>
+  <object id="553" class="decor" gid="63" x="1505.33" y="235.667" width="81" height="73"/>
+  <object id="554" class="decor" gid="65" x="1728" y="192" width="59" height="59"/>
+  <object id="555" class="decor" gid="65" x="1792" y="192" width="59" height="59"/>
+  <object id="522" class="decor" gid="66" x="2272" y="224" width="58" height="58"/>
+  <object id="591" class="decor" gid="65" x="2048" y="64" width="59" height="59"/>
+  <object id="587" class="decor" gid="63" x="2016" y="139.667" width="81" height="73"/>
+  <object id="588" class="decor" gid="64" x="2069.67" y="115.333" width="74" height="44"/>
+ </objectgroup>
+ <objectgroup id="10" name="eyes" visible="0">
+  <object id="293" name="eyes" gid="74" x="192" y="96" width="256" height="32"/>
+ </objectgroup>
+ <objectgroup id="7" name="player">
+  <object id="246" name="player" class="element" gid="57" x="158.667" y="116" width="112" height="64">
+   <properties>
+    <property name="bodyType" value="dynamic"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="boss">
+  <object id="475" name="boss" gid="72" x="2400" y="160" width="133" height="128"/>
+ </objectgroup>
+ <objectgroup id="5" name="hud" visible="0">
+  <object id="240" class="hud" gid="67" x="1" y="34" width="32" height="32"/>
+  <object id="241" class="hud" gid="68" x="32" y="32" width="32" height="32"/>
+  <object id="242" class="hud" gid="69" x="64" y="32" width="32" height="32"/>
+ </objectgroup>
+</map>

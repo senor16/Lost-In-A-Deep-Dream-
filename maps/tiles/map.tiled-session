@@ -1,0 +1,78 @@
+{
+    "activeFile": "tiled-map.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiled-map.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 384,
+                "y": 241.33333333333331
+            }
+        },
+        "tiled-map.tmx#DnN_LevelProps": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiled-map.tmx#DnN_LevelTiles": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "tiled-map.tmx#boss": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiled-map.tmx#bossTile": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "tiled-map.tmx#enemy": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "tiled-map.tmx#eyes": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiled-map.tmx#hero": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiled-map.tmx#hud": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "tiled-map.tmx#props": {
+            "dynamicWrapping": true
+        }
+    },
+    "frame.defaultDuration": 120,
+    "last.exportedFilePath": "H:/Lost In A Deep Dream/maps/tiles",
+    "last.imagePath": "H:/Lost In A Deep Dream/images/DnN_Level",
+    "last.objectTemplatePath": "E:/Projects/Developement/Corona/Lost In A Deep Dream/maps/tiles",
+    "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
+    "openFiles": [
+        "tiled-map.tmx"
+    ],
+    "project": "map.tiled-project",
+    "property.type": "string",
+    "recentFiles": [
+        "tiled-map.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 32,
+        "width": 32
+    },
+    "tileset.type": 1
+}
