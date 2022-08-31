@@ -1,6 +1,6 @@
 local composer = require("composer")
 composer.gotoScene(
-    "gameplay",
+    "menu",
     {
         effect = "fade",
         time = "800"
