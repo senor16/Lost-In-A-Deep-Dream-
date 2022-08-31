@@ -133,7 +133,7 @@ function loadEnemies()
 
         local function enemyShoot(event)
             local enemy = listEnemies[event.source.params.id]
-            if enemy == nil then
+            if enemy == nil or player.dead then
                 timer.cancel(event.source)
             else
                 if math.abs(player.x - enemy.x) <= 300 then
@@ -217,8 +217,10 @@ function gameplay:create(event)
 
     local hud = map:listTypes("hud")
     for num, obj in pairs(hud) do
+        obj.anchorX = 0
         world:insert(obj)
     end
+
 
 
 
@@ -265,16 +267,22 @@ function gameplay:create(event)
     player.y = y
     player:setSequence("idle")
     player:play()
-    player.energy = 2
+    player.energy = 24
+    player.dead = false
     function player:hurt(pV)
         player.energy = player.energy - pV
+
+        if player.energy >= 12 then
+            hud[#hud].width = (player.energy - 12) * hud[#hud].width / 12
+        else
+            hud[#hud - 1].width = (player.energy) * hud[#hud - 1].width / 12
+        end
         audio.play(playerHitSound)
-        print(player.energy)
-        if player.energy <= 0 then
+        if player.energy <= 4 then
+            player.dead = true
             local function listener(object)
                 audio.fadeOut({ channel = backgroundMusicChannel, time = 3000 })
                 audio.stop()
-
                 world:insert(eyes)
                 composer.gotoScene(
                     "gameover",
@@ -287,7 +295,7 @@ function gameplay:create(event)
                 )
             end
 
-            transition.to(player, { time = 2000, alpha = 0, onComplete = listener })
+            transition.to(player, { time = 800, alpha = 0, onComplete = listener })
         end
     end
 
@@ -454,7 +462,7 @@ function gameplay:create(event)
         boss:addEventListener("sprite", onAnimation)
 
         local function bossShoot(event)
-            if boss.x == nil then
+            if boss.x == nil or player.dead then
                 timer.cancel(event.source)
             else
                 if math.abs(player.x - boss.x) <= 400 then
@@ -581,7 +589,7 @@ function addBullet(pX, pY, pDir, pTarget, pFrom)
                 -- Handle when the player is hit
                 player:setSequence("hurt")
                 player:play()
-                player:hurt(1)
+                player:hurt(.5)
             end
         elseif event.other.type == "normalEn" or event.other.type == "boss" then
             -- Handle when an enemy is hit
