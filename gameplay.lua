@@ -180,7 +180,7 @@ end
 
 function gameplay:create(event)
     world = self.view
-
+    print("Gameplay")
     -- Load music
     backgroundMusic = audio.loadStream("audio/background.ogg")
     playerHitSound = audio.loadSound("audio/PlayerHit.ogg")
@@ -265,10 +265,30 @@ function gameplay:create(event)
     player.y = y
     player:setSequence("idle")
     player:play()
-    player.energy = 10
+    player.energy = 2
     function player:hurt(pV)
         player.energy = player.energy - pV
         audio.play(playerHitSound)
+        print(player.energy)
+        if player.energy <= 0 then
+            local function listener(object)
+                audio.fadeOut({ channel = backgroundMusicChannel, time = 3000 })
+                audio.stop()
+
+                world:insert(eyes)
+                composer.gotoScene(
+                    "gameover",
+                    {
+                        effect = "fade",
+                        time = "800",
+                        params = { win = false }
+
+                    }
+                )
+            end
+
+            transition.to(player, { time = 2000, alpha = 0, onComplete = listener })
+        end
     end
 
     player:addEventListener("sprite", onAnimation)
@@ -672,18 +692,19 @@ local function onKeyEvent(event)
 end
 
 function update()
-    player.rotation = 0
 
-    -- Prevent the player from leaving the screen
-    local vx,
-    vy = player:getLinearVelocity()
+    if player.energy > 0 then
+        player.rotation = 0
+        -- Prevent the player from leaving the screen
+        local vx,
+        vy = player:getLinearVelocity()
 
-    -- Put the idle animation when the player is in idle state
-    if not player.isPlaying then
-        player:setSequence("idle")
-        player:play()
+        -- Put the idle animation when the player is in idle state
+        if not player.isPlaying then
+            player:setSequence("idle")
+            player:play()
+        end
     end
-
     -- Update the boss
     if boss.x ~= nil then
         if math.abs(boss.x - player.x) <= 70 then

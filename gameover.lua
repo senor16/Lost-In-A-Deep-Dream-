@@ -2,6 +2,7 @@ local composer = require("composer")
 local gameover = composer.newScene()
 
 function gameover:create(event)
+    print("Game Over")
     local sceneGroup = self.view
     local textWin = "Congratulations"
     local textLost = "Game Over"
@@ -30,6 +31,15 @@ function gameover:create(event)
     eyes:setFrame(2)
     eyes.x, eyes.y = 320, 80
 
+    local btnmenu =
+    display.newText(
+        sceneGroup,
+        "Back to Menu",
+        display.contentCenterX,
+        display.contentCenterY,
+        native.systemFont,
+        30
+    )
 
 
     local status =
@@ -50,6 +60,7 @@ function gameover:create(event)
         else
             status.text = textLost
             eyes:setSequence("lost")
+            display.remove(btnmenu)
         end
     end
     eyes:play()
@@ -58,15 +69,7 @@ function gameover:create(event)
 
     local gameTitle =
     display.newText(sceneGroup, "Lost in A Deep Dream", display.contentCenterX, 30, native.systemFont, 30)
-    local btnGameplay =
-    display.newText(
-        sceneGroup,
-        "Back to Menu",
-        display.contentCenterX,
-        display.contentCenterY,
-        native.systemFont,
-        30
-    )
+
     local credits =
     display.newText(
         {
@@ -81,17 +84,17 @@ function gameover:create(event)
         }
     )
 
-    function onBtnGameplay(event)
+    function onBtnMenu(event)
         composer.gotoScene(
-            "menu",
+            "gameplay",
             {
                 effect = "fade",
-                time = "800"
+                time = "2000"
             }
         )
     end
 
-    btnGameplay:addEventListener("tap", onBtnGameplay)
+    btnmenu:addEventListener("tap", onBtnMenu)
 end
 
 gameover:addEventListener("create", gameover)

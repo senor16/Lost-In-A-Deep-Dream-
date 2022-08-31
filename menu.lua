@@ -5,11 +5,8 @@ local menu = composer.newScene()
 
 function menu:create(event)
     local sceneGroup = self.view
-
-
-
     -- The eyes
-
+    print("Menu")
     local eyesInfo = require("images.DnN_Boss.eyes")
     local eyesSheet = graphics.newImageSheet("images/DnN_Boss/eyes.png", eyesInfo:getSheet())
     local eyesSequence = {
